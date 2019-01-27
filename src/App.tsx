@@ -1,28 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react'
+import Dashboard from './pages/Dashboard'
+import AppBar from './components/AppBar'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Settings from './pages/Settings'
+import cryptocompare from 'cryptocompare'
+import { connect } from 'react-redux'
+import * as actions from './redux/actions'
+import './global.scss'
 
-class App extends Component {
+interface IProps {
+  setCoinList: any
+}
+
+class App extends React.Component<IProps, object> {
+  componentWillMount = async () => {
+    const list = await cryptocompare.coinList()
+    this.props.setCoinList(list.Data)
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <BrowserRouter>
+        <React.Fragment>
+          <AppBar />
+          <Switch>
+            <Route exact path='/' component={Dashboard} />
+            <Route exact path='/settings' component={Settings} />
+          </Switch>
+        </React.Fragment>
+      </BrowserRouter>
+    )
   }
 }
 
-export default App;
+export default connect(
+  null,
+  actions
+)(App)

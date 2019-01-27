@@ -1,0 +1,10 @@
+FROM node:alpine
+RUN npm install -g yarn python
+
+WORKDIR '/home/cryptodash'
+COPY package.json /
+COPY yarn.lock /
+RUN yarn install
+COPY . .
+
+CMD ["yarn", "start"]

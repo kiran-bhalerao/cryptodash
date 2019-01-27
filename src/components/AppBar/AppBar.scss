@@ -1,0 +1,15 @@
+.app-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #fff;
+  padding: 20px 30px;
+}
+
+.app-bar-right {
+  font-size: 1.5rem;
+}
+.app-bar-left {
+  display: flex;
+  flex-direction: row;
+}

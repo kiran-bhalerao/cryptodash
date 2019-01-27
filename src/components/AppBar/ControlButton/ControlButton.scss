@@ -1,0 +1,12 @@
+.active-app-bar {
+  color: #ff0379;
+}
+
+.app-bar-item {
+  margin-left: 40px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.app-bar-item:active {
+  color: #ff0379;
+}

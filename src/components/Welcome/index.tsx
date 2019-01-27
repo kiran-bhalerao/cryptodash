@@ -14,6 +14,7 @@ interface IProps {
   page?: string
   setFirstVisit?: any
   nav?: any
+  coin?: any
 }
 class Welcome extends React.Component<IProps, IState> {
   state = {
@@ -25,7 +26,10 @@ class Welcome extends React.Component<IProps, IState> {
   }
 
   handleFev = () => {
-    localStorage.setItem('cryptodash@isfirst', 'true')
+    localStorage.setItem(
+      'cryptodash@fevCoinList',
+      JSON.stringify(this.props.coin.fevCoinList)
+    )
     this.props.setFirstVisit()
     this.setState({
       isFev: true
@@ -36,7 +40,7 @@ class Welcome extends React.Component<IProps, IState> {
     return (
       <div>
         {props.page == 'normal' && <p className='welcome'>{props.msg}</p>}
-        {props.page == 'Settings' && props.nav.isFirst && (
+        {props.page == 'Settings' && (
           <div className='fav-container'>
             <p
               className='fav'
@@ -45,6 +49,11 @@ class Welcome extends React.Component<IProps, IState> {
             >
               {props.msg}
             </p>
+          </div>
+        )}
+        {props.page == 'big' && (
+          <div className='fav-container'>
+            <p style={{ color: color3, fontSize: fontSizeBig }}>{props.msg}</p>
           </div>
         )}
         {this.state.isFev && <Redirect from='/settings' to='/' />}

@@ -1,14 +1,13 @@
 import { SET_FIRST_VISIT } from '../actions/types'
 
-interface IAction {
-  type: string
-  payload: any
+interface IState {
+  isFirst: any
 }
-const INITIAL_STATE = {
+const INITIAL_STATE: IState = {
   isFirst: false
 }
 
-export default (state = INITIAL_STATE, { type, payload }: IAction) => {
+export default (state = INITIAL_STATE, { type, payload }: any) => {
   switch (type) {
     case SET_FIRST_VISIT:
       return { ...state, isFirst: payload }

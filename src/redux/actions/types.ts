@@ -1,2 +1,5 @@
 export const SET_FIRST_VISIT = 'is_first_visit'
 export const SET_COIN_LIST = 'set_coin_list'
+export const ADD_FEV_COIN = 'add_fev_coin'
+export const REMOVE_FEV_COIN = 'remove_fev_coin'
+export const FETCH_PRICE = 'fetch_price'

@@ -1,7 +1,8 @@
 FROM node:alpine as builder
 
 WORKDIR '/home/cryptodash'
-COPY package.json yarn.lock ./
+COPY package.json /
+COPY yarn.lock /
 RUN yarn install
 COPY . .
 RUN yarn build
